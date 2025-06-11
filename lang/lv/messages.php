@@ -43,4 +43,5 @@ return [
     'date' => 'Datums',
     'upload' => 'Augšupielādēt',
     'photos' => 'Foto',
+    'owner' => 'Īpašnieks',
 ];

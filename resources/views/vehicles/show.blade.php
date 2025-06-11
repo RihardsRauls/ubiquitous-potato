@@ -2,6 +2,7 @@
     <x-slot name="title">
         {{ __('messages.title') }} 
     </x-slot>
+
     <h1>{{ $vehicle->make }} {{ $vehicle->model }} ({{ $vehicle->year }})</h1>
 
     <p><strong>{{ __('messages.mileage') }} :</strong> {{ $vehicle->mileage }}</p>
@@ -13,25 +14,36 @@
     <hr>
 
     <h3>{{ __('messages.upload') }} </h3>
-    <form method="POST" action="{{ route('photos.store', $vehicle) }}" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-2">
-            <label for="photo">{{ __('messages.choose') }} </label>
-            <input type="file" name="photo" class="form-control" required>
-        </div>
 
-        <div class="mb-2">
-            <label>{{ __('messages.desc') }} </label>
-            <input type="text" name="description" class="form-control">
-        </div>
+    <!-- Toggle Button -->
+    <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#uploadForm" aria-expanded="false" aria-controls="uploadForm">
+        {{ __('messages.upload') }} {{ __('messages.photo') }}
+    </button>
 
-        <div class="mb-2">
-            <label>{{ __('messages.date') }} </label>
-            <input type="date" name="date" class="form-control" required>
-        </div>
+    <!-- Collapsible Form -->
+    <div class="collapse" id="uploadForm">
+        <div class="card card-body">
+            <form method="POST" action="{{ route('photos.store', $vehicle) }}" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-2">
+                    <label for="photo">{{ __('messages.choose') }} </label>
+                    <input type="file" name="photo" class="form-control" required>
+                </div>
 
-        <button type="submit" class="btn btn-success">{{ __('messages.upload') }} </button>
-    </form>
+                <div class="mb-2">
+                    <label>{{ __('messages.desc') }} </label>
+                    <input type="text" name="description" class="form-control">
+                </div>
+
+                <div class="mb-2">
+                    <label>{{ __('messages.date') }} </label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-success">{{ __('messages.upload') }} </button>
+            </form>
+        </div>
+    </div>
 
     <hr>
     <h3>{{ __('messages.photos') }} </h3>

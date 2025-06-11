@@ -24,14 +24,14 @@
                         <p>{{ __('messages.mileage') }} : {{ $vehicle->mileage }}</p>
 
                         @if(auth()->user()->isAdmin())
-                            <p><strong>Owner:</strong> {{ $vehicle->user->name }} ({{ $vehicle->user->email }})</p>
+                            <p><strong>{{ __('messages.owner') }}:</strong> {{ $vehicle->user->name }} ({{ $vehicle->user->email }})</p>
                         @endif
 
                         <a href="{{ route('vehicles.show', $vehicle) }}" class="btn btn-sm btn-info">{{ __('messages.details') }} </a>
                         <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-sm btn-warning">{{ __('messages.edit') }} </a>
                         <form action="{{ route('vehicles.destroy', $vehicle) }}" method="POST" class="d-inline">
                             @csrf @method('DELETE')
-                            <button class="btn btn-sm btn-danger" onclick="return confirm('Delete this vehicle?')">{{ __('messages.delete') }} </button>
+                            <button class="btn btn-sm btn-danger">{{ __('messages.delete') }} </button>
                         </form>
                     </div>
                 </div>

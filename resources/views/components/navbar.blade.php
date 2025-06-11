@@ -4,7 +4,7 @@
             <a href="{{ route('vehicles.index') }}" class="btn btn-primary">{{ __('messages.vehicles') }}</a>
 
             <div class="font-weight-bold">
-                Riga: {{ $rigaTemp }}°C
+                Rīga: {{ $rigaTemp }}°C
             </div>
 
             <form method="POST" action="{{ route('language.update') }}">

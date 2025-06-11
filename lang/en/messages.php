@@ -43,4 +43,5 @@ return [
 	'date' => 'Date',
 	'upload' => 'Upload',
 	'photos' => 'Photos',
+    'owner' => 'Owner',
 ];
