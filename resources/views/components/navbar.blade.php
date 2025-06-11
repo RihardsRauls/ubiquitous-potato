@@ -3,18 +3,22 @@
         @auth
             <a href="{{ route('vehicles.index') }}" class="btn btn-primary">{{ __('messages.vehicles') }}</a>
 
-        <form method="POST" action="{{ route('language.update') }}">
-            @csrf
-            <button type="submit" name="language" value="lv" class="btn btn-danger me-2"
-                @if(Auth::user()->language == 'lv') style="font-weight: bold;" @endif>
-                LV
-            </button>
+            <div class="font-weight-bold">
+                Riga: {{ $rigaTemp }}°C
+            </div>
 
-            <button type="submit" name="language" value="en" class="btn btn-primary"
-                @if(Auth::user()->language == 'en') style="font-weight: bold;" @endif>
-                ENG
-            </button>
-        </form>
+            <form method="POST" action="{{ route('language.update') }}">
+                @csrf
+                <button type="submit" name="language" value="lv" class="btn btn-danger me-2"
+                    @if(Auth::user()->language == 'lv') style="font-weight: bold;" @endif>
+                    LV
+                </button>
+
+                <button type="submit" name="language" value="en" class="btn btn-primary"
+                    @if(Auth::user()->language == 'en') style="font-weight: bold;" @endif>
+                    ENG
+                </button>
+            </form>
 
             <form method="POST" action="{{ route('logout') }}">
             @csrf
