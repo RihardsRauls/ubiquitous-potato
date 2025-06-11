@@ -28,7 +28,9 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('listing.index');
+        //return redirect()->route('listing.index');
+
+        return redirect()->route('vehicles.index');
     }
 
     public function showLogin() {
@@ -40,11 +42,17 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
+/*         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('listing.index'));
-        }
+        } 
+*/
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('vehicles.index'));
+        } 
 
         return back()->withErrors([
             'email' => 'Invalid credentials.',

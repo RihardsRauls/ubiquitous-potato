@@ -11,18 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-/*         Schema::create('employment_types', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 100)->unique();
+            $table->foreignId('vehicle_id')->constrained()->onDelete('cascade');
+            $table->string('path');
+            $table->text('description')->nullable();
+            $table->date('date');
             $table->timestamps();
-        }); */
+        });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('employment_types');
+        Schema::dropIfExists('photos');
     }
 };

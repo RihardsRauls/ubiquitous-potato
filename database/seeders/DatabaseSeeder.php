@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\JobCategory;
+/* use App\Models\JobCategory;
 use App\Models\EmploymentType;
 use App\Models\Listing;
-use App\Models\Application;
+use App\Models\Application; */
 
 use Illuminate\Database\Seeder;
 
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        JobCategory::create(['category' => 'Data Scientist']);
+/*         JobCategory::create(['category' => 'Data Scientist']);
         JobCategory::create(['category' => 'Designer']);
         JobCategory::create(['category' => 'Marketing']);
         JobCategory::create(['category' => 'Product Manager']);
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         EmploymentType::create(['type' => 'Freelance']);
         EmploymentType::create(['type' => 'Full-time']);
         EmploymentType::create(['type' => 'Internship']);
-        EmploymentType::create(['type' => 'Part-time']);
+        EmploymentType::create(['type' => 'Part-time']); */
 
 
         $user1 = User::create([
@@ -38,12 +38,13 @@ class DatabaseSeeder extends Seeder
             'password' =>  bcrypt('secret'),
         ]);
 
-        $user2 = User::create([
+
+/*         $user2 = User::create([
             'name'     => 'Ralfs',
             'email'    => 'ralfs@example.com',
             'password' => bcrypt('secret'),
             'role' => 'employee',
-        ]);
+        ]); */
 
         User::create([
             'name' => 'Admin User',
@@ -52,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);            
 
-
+/* 
         $listing1 = Listing::create([
             'title'              => JobCategory::where('category', 'Software Engineer')->first()->category,
             'description'        => 'Looking for a person',
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'user_id'     => $user1->id,
             'listing_id'  => $listing2->id,
             'cover_letter'=> 'I have seen bought and seen a lot of dropshipping courses :)',
-        ]);
+        ]); */
 
         
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+// namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 
-class EmploymentType extends Model
-{
-    protected $fillable = [
-        'type', 
-    ];
-}
+// class EmploymentType extends Model
+// {
+//     protected $fillable = [
+//         'type', 
+//     ];
+// }

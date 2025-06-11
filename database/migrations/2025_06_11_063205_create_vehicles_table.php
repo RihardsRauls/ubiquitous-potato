@@ -11,21 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-/*         Schema::create('applications', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->text('cover_letter')->nullable();
-
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('listing_id')->constrained()->onDelete('cascade');
+            $table->string('make');
+            $table->string('model');
+            $table->string('year');
+            $table->string('mileage');
+            $table->text('maintenance_history')->nullable();
+            $table->text('inspection_records')->nullable();
             $table->timestamps();
-        }); */
+        });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('vehicles');
     }
 };

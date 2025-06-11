@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('listings', function (Blueprint $table) {
+/*         Schema::create('listings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('employment_type_id')->constrained('employment_types')->onDelete('cascade');
 
             $table->timestamps();
-        });
+        }); */
     }
 
     /**

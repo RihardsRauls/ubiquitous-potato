@@ -1,7 +1,10 @@
 <nav class="navbar bg-light">
     <div class="container">
         @auth
-            <a href="{{ route('vehicles.index') }}" class="btn btn-primary">Vehicles</a>
+            <a href="{{ route('listing.index') }}" class="btn btn-primary">All Listings</a>
+            @can('create', \App\Models\Listing::class)
+            <a href="{{ route('listing.create') }}" class="btn btn-primary">Create Listing</a>
+            @endcan
             <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn btn-primary">Logout</button>
