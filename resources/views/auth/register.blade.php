@@ -4,10 +4,10 @@
             <div class="col-md-6">
                 <form action="{{ route('register') }}" method="POST" class="card p-4 shadow-sm">
                     @csrf
-                    <h2 class="mb-4 text-center">Register</h2>
+                    <h2 class="mb-4 text-center">{{ __('messages.register') }}</h2>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Full Name</label>
+                        <label for="name" class="form-label">{{ __('messages.name') }}</label>
                         <input 
                             type="text" 
                             name="name" 
@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email" class="form-label">{{ __('messages.email') }}</label>
                         <input 
                             type="email" 
                             name="email" 
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label">{{ __('messages.password') }}</label>
                         <input 
                             type="password" 
                             name="password" 
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Confirm Password</label>
+                        <label for="password_confirmation" class="form-label">{{ __('messages.confirmp') }}</label>
                         <input 
                             type="password" 
                             name="password_confirmation" 
@@ -61,7 +61,7 @@
                         >
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <button type="submit" class="btn btn-primary w-100">{{ __('messages.register') }}</button>
 
                 </form>
             </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\LanguageController;
 // use App\Http\Controllers\ListingController;
 // use App\Http\Controllers\ApplicationController;
 
@@ -34,6 +35,10 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+
+Route::post('/language/update', [LanguageController::class, 'update'])
+    ->middleware('auth')
+    ->name('language.update');
 
 /* Route::post('/listing/{listing}/apply', [ApplicationController::class, 'store'])
     ->middleware('auth')

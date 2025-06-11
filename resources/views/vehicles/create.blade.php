@@ -1,12 +1,12 @@
 <x-layout>
     <x-slot name="title">
-        Add New Vehicle
+        {{ __('messages.create') }} 
     </x-slot>
-    <h1>Add New Vehicle</h1>
+    <h1>{{ __('messages.create') }} </h1>
 
     <form method="POST" action="{{ route('vehicles.store') }}">
         @csrf
         @include('vehicles.partials.form')
-        <button type="submit" class="btn btn-primary mt-2">Save</button>
+        <button type="submit" class="btn btn-primary mt-2">{{ __('messages.save') }}</button>
     </form>
 </x-layout>
