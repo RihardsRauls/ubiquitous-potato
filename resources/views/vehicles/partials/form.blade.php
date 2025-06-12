@@ -50,6 +50,34 @@
 </div>
 
 <div class="mb-3">
+    <label for="vin" class="form-label">VIN</label>
+    <input 
+        type="text" 
+        name="vin" 
+        id="vin" 
+        class="form-control @error('vin') is-invalid @enderror" 
+        value="{{ old('vin', $vehicle->vin ?? '') }}"
+    >
+    @error('vin')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
+    <label for="registration_number" class="form-label">Registration Number</label>
+    <input 
+        type="text" 
+        name="registration_number" 
+        id="registration_number" 
+        class="form-control @error('registration_number') is-invalid @enderror" 
+        value="{{ old('registration_number', $vehicle->registration_number ?? '') }}"
+    >
+    @error('registration_number')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-3">
     <label for="mileage" class="form-label">{{ __('messages.mileage') }}</label>
     <input
         type="number"

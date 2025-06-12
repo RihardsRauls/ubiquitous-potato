@@ -44,4 +44,7 @@ return [
     'upload' => 'Augšupielādēt',
     'photos' => 'Foto',
     'owner' => 'Īpašnieks',
+//new
+	'vin' => 'VIN Numurs',
+	'registration_number'  => 'Reģistrācija',
 ];

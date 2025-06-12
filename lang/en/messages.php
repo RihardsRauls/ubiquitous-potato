@@ -44,4 +44,7 @@ return [
 	'upload' => 'Upload',
 	'photos' => 'Photos',
     'owner' => 'Owner',
+//new
+	'vin' => 'VIN Number',
+	'registration_number'  => 'Registration',
 ];

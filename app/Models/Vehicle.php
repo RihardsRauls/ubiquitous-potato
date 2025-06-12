@@ -10,6 +10,8 @@ class Vehicle extends Model
         'make',
         'model',
         'year',
+        'vin',
+        'registration_number',
         'mileage',
         'maintenance_history',
         'inspection_records',

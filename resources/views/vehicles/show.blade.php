@@ -5,8 +5,10 @@
 
     <h1>{{ $vehicle->make }} {{ $vehicle->model }} ({{ $vehicle->year }})</h1>
 
+    <p><strong>{{ __('messages.registration_number') }} :</strong> {{ $vehicle->registration_number }}</p>
     <p><strong>{{ __('messages.mileage') }} :</strong> {{ $vehicle->mileage }}</p>
     <p><strong>{{ __('messages.maintenance') }} :</strong> {{ $vehicle->maintenance_history }}</p>
+    <p><strong>{{ __('messages.vin') }} :</strong> {{ $vehicle->vin }}</p>
     <p><strong>{{ __('messages.inspection') }} :</strong> {{ $vehicle->inspection_records }}</p>
 
     <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-warning">{{ __('messages.edit') }} </a>

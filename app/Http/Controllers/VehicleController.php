@@ -46,8 +46,10 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'make' => 'required|string|min:2|max:255',
             'model' => 'required|string|min:1|max:255',
-            'year' => 'required|integer|between:1900,',
+            'year' => 'required|integer|between:1900,' . date('Y'),
             'mileage' => 'required|integer|min:0|max:10000000',
+            'vin' => 'nullable|string|size:17',
+            'registration_number' => 'nullable|string|min:4|max:20',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',
         ]);
@@ -68,8 +70,10 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'make' => 'required|string|min:2|max:255',
             'model' => 'required|string|min:1|max:255',
-            'year' => 'required|integer|between:1900,',
+            'year' => 'required|integer|between:1900,' . date('Y'),
             'mileage' => 'required|integer|min:0|max:10000000',
+            'vin' => 'nullable|string|size:17',
+            'registration_number' => 'nullable|string|min:4|max:20',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',
         ]);
