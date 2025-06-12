@@ -39,7 +39,3 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 Route::post('/language/update', [LanguageController::class, 'update'])
     ->middleware('auth')
     ->name('language.update');
-
-Route::middleware(['auth', 'can:viewAuditLogs'])->prefix('admin')->name('admin.')->group(function() {
-    Route::get('/audit-logs', [\App\Http\Controllers\AuditLogController::class, 'index'])->name('audit-logs.index');
-});
