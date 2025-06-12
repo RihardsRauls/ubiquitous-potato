@@ -5,16 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LanguageController;
-// use App\Http\Controllers\ListingController;
-// use App\Http\Controllers\ApplicationController;
 
 Route::get('/', function (){
     return view('welcome');
 });
 
-/* Route::middleware('auth')->group(function () {
-    Route::resource('listing', ListingController::class);
-}); */
 
 Route::middleware('auth')->group(function () {
     Route::resource('vehicles', VehicleController::class);
@@ -24,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('vehicles', VehicleController::class);
     
     Route::post('/vehicles/{vehicle}/photos', [PhotoController::class, 'store'])->name('photos.store');
+    Route::get('/vehicles/{vehicle}/photos/add', [PhotoController::class, 'create'])->name('photos.create');
     Route::delete('/photos/{photo}', [PhotoController::class, 'destroy'])->name('photos.destroy');
 });
 
@@ -39,8 +35,3 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 Route::post('/language/update', [LanguageController::class, 'update'])
     ->middleware('auth')
     ->name('language.update');
-
-/* Route::post('/listing/{listing}/apply', [ApplicationController::class, 'store'])
-    ->middleware('auth')
-    ->name('listing.apply'); */
-

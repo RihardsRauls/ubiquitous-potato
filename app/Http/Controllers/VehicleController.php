@@ -46,7 +46,7 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'make' => 'required|string|min:2|max:255',
             'model' => 'required|string|min:1|max:255',
-            'year' => 'required|integer|between:1900,' . date('Y'),
+            'year' => 'required|integer|between:1900,',
             'mileage' => 'required|integer|min:0|max:10000000',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',
@@ -68,7 +68,7 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'make' => 'required|string|min:2|max:255',
             'model' => 'required|string|min:1|max:255',
-            'year' => 'required|integer|between:1900,' . date('Y'),
+            'year' => 'required|integer|between:1900,',
             'mileage' => 'required|integer|min:0|max:10000000',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',

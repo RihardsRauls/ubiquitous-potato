@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
@@ -32,6 +31,16 @@ class PhotoController extends Controller
 
         return back()->with('success', 'Photo uploaded.');
     }
+
+    public function create(Request $request, Vehicle $vehicle)
+    {
+        if ($request->user()->cannot('update', $vehicle)) {
+            abort(403);
+        }
+
+        return view('photos.add', compact('vehicle'));
+    }
+
 
     public function destroy(Request $request, Photo $photo)
     {

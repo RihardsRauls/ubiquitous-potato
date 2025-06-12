@@ -27,11 +27,12 @@
                             <p><strong>{{ __('messages.owner') }}:</strong> {{ $vehicle->user->name }} ({{ $vehicle->user->email }})</p>
                         @endif
 
-                        <a href="{{ route('vehicles.show', $vehicle) }}" class="btn btn-sm btn-info">{{ __('messages.details') }} </a>
-                        <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-sm btn-warning">{{ __('messages.edit') }} </a>
+                        <a href="{{ route('vehicles.show', $vehicle) }}" class="btn btn-info">{{ __('messages.details') }} </a>
+                        <a href="{{ route('vehicles.edit', $vehicle) }}" class="btn btn-warning">{{ __('messages.edit') }} </a>
+                        <a href="{{ route('photos.create', $vehicle) }}" class="btn btn-warning">{{ __('messages.upload') }}</a>    
                         <form action="{{ route('vehicles.destroy', $vehicle) }}" method="POST" class="d-inline">
                             @csrf @method('DELETE')
-                            <button class="btn btn-sm btn-danger">{{ __('messages.delete') }} </button>
+                            <button class="btn btn-danger">{{ __('messages.delete') }} </button>
                         </form>
                     </div>
                 </div>
