@@ -20,6 +20,14 @@
                 </button>
             </form>
 
+            @can('viewAuditLogs')
+                <div>
+                    <a href="{{ route('admin.index') }}" class="btn btn-primary">
+                        {{ __('Audit Logs') }}
+                    </a>
+                </div>
+            @endcan
+
             <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn btn-primary">{{ __('messages.logout') }}</button>

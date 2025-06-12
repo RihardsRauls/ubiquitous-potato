@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('vehicles', function (Blueprint $table) {
-            $table->string('vin')->nullable()->after('year');
-            $table->string('registration_number')->nullable()->after('vin');
+            $table->string('vin')->after('year');
+            $table->string('registration_number')->after('vin');
         });
     }
 

@@ -47,4 +47,11 @@ return [
 //new
 	'vin' => 'VIN Number',
 	'registration_number'  => 'Registration',
+	'auditlogs' => 'Audit Logs',
+	'noauditlogsfound' => 'No audit logs found.' ,
+	'user' => 'User',
+	'action' => 'Action',
+	'ip' => 'IP Address',
+	'date' => 'Date',
+	'novehicles' => 'There are no vehicles.',
 ];

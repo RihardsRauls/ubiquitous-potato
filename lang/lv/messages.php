@@ -47,4 +47,11 @@ return [
 //new
 	'vin' => 'VIN Numurs',
 	'registration_number'  => 'Reģistrācija',
+	'auditlogs' => 'Maiņas ieraksti',
+	'noauditlogsfound' => 'Nav neviena ieraksta.' ,
+	'user' => 'Lietotājs',
+	'action' => 'Rīcība',
+	'ip' => 'IP Adrese',
+	'date' => 'Datums',
+    'novehicles' => 'Nav neviena transportlīdzekļa.',
 ];

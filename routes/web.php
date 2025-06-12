@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/vehicles/{vehicle}/photos', [PhotoController::class, 'store'])->name('photos.store');
     Route::get('/vehicles/{vehicle}/photos/add', [PhotoController::class, 'create'])->name('photos.create');
     Route::delete('/photos/{photo}', [PhotoController::class, 'destroy'])->name('photos.destroy');
+
+    Route::middleware('can:viewAuditLogs')->group(function () {
+        Route::get('/admin', [\App\Http\Controllers\AuditLogController::class, 'index'])->name('admin.index');
+    });
 });
 
 Route::middleware('guest')->group(function () {
@@ -35,3 +39,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 Route::post('/language/update', [LanguageController::class, 'update'])
     ->middleware('auth')
     ->name('language.update');
+
+Route::middleware(['auth', 'can:viewAuditLogs'])->prefix('admin')->name('admin.')->group(function() {
+    Route::get('/audit-logs', [\App\Http\Controllers\AuditLogController::class, 'index'])->name('audit-logs.index');
+});

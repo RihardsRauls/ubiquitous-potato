@@ -5,6 +5,12 @@
 
     <h2>{{ __('messages.upload') }} {{ $vehicle->make }} {{ $vehicle->model }}</h2>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('photos.store', $vehicle) }}" enctype="multipart/form-data">
         @csrf
 

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\AuditLog;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 use App\Models\Photo;
 use App\Models\Vehicle;
@@ -29,6 +31,13 @@ class PhotoController extends Controller
             'date' => $validated['date'],
         ]);
 
+        AuditLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Created photo',
+            'description' => 'Photo uploaded: ' . $path,
+            'ip_address' => $request->ip(),
+        ]);
+
         return back()->with('success', 'Photo uploaded.');
     }
 
@@ -41,7 +50,6 @@ class PhotoController extends Controller
         return view('photos.add', compact('vehicle'));
     }
 
-
     public function destroy(Request $request, Photo $photo)
     {
         $vehicle = $photo->vehicle;
@@ -50,8 +58,17 @@ class PhotoController extends Controller
             abort(403);
         }
 
+        $path = $photo->path;
+
         Storage::disk('public')->delete($photo->path);
         $photo->delete();
+
+        AuditLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Deleted photo.',
+            'description' => 'Photo: ' . $path,
+            'ip_address' => request()->ip(),
+        ]);
 
         return back()->with('success', 'Photo deleted.');
     }

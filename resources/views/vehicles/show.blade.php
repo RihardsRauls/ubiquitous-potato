@@ -18,14 +18,17 @@
 
     <h3>{{ __('messages.photos') }} </h3>
 
-    @foreach($vehicle->photos as $photo)
-        <div class="mb-3">
-            <img src="{{ asset('storage/' . $photo->path) }}" width="200" class="img-thumbnail">
-            <p>{{ $photo->description }} ({{ $photo->date }})</p>
-            <form method="POST" action="{{ route('photos.destroy', $photo) }}">
-                @csrf @method('DELETE')
-                <button class="btn btn-sm btn-danger">{{ __('messages.delete') }} </button>
-            </form>
-        </div>
-    @endforeach
+    <div class="d-flex flex-wrap gap-3">
+        @foreach($vehicle->photos as $photo)
+            <div class="d-flex flex-column align-items-start border p-2" style="width: 200px;">
+                <img src="{{ asset('storage/' . $photo->path) }}" class="img-thumbnail mb-2">
+                <p class="mb-2">{{ $photo->description }} <br>({{ $photo->date }})</p>
+                <form method="POST" action="{{ route('photos.destroy', $photo) }}">
+                    @csrf @method('DELETE')
+                    <button class="btn btn-sm btn-danger">{{ __('messages.delete') }}</button>
+                </form>
+            </div>
+        @endforeach
+    </div>
+
 </x-layout>

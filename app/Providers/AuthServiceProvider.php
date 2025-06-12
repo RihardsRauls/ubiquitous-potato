@@ -3,15 +3,13 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-//use App\Models\Listing;
-//use App\Policies\ListingPolicy;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Vehicle;
 use App\Policies\VehiclePolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-        //Listing::class => ListingPolicy::class,
         Vehicle::class => VehiclePolicy::class,
     ];
     /**
@@ -28,5 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPolicies();
+
+        Gate::define('viewAuditLogs', function ($user) {
+        return $user->isAdmin();
+    });
     }
 }

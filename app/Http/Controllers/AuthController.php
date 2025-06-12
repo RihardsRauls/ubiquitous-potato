@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\AuditLog;
 
 class AuthController extends Controller
 {
@@ -28,7 +29,12 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        //return redirect()->route('listing.index');
+        AuditLog::create([
+            'user_id' => $user->id,
+            'action' => 'User registered',
+            'description' => 'User registered with email: ' . $user->email,
+            'ip_address' => $request->ip(),
+        ]);
 
         return redirect()->route('vehicles.index');
     }
@@ -42,12 +48,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-/*         
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended(route('listing.index'));
-        } 
-*/
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();

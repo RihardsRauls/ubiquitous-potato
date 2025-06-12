@@ -6,6 +6,9 @@ use Illuminate\Routing\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
+use App\Models\AuditLog;
+use Illuminate\Support\Facades\Auth;
+
 class VehicleController extends Controller
 {
     public function __construct()
@@ -48,15 +51,22 @@ class VehicleController extends Controller
             'model' => 'required|string|min:1|max:255',
             'year' => 'required|integer|between:1900,' . date('Y'),
             'mileage' => 'required|integer|min:0|max:10000000',
-            'vin' => 'nullable|string|size:17',
-            'registration_number' => 'nullable|string|min:4|max:20',
+            'vin' => 'required|string|size:17',
+            'registration_number' => 'required|string|min:4|max:20',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',
         ]);
 
         $validated['user_id'] = $request->user()->id;
 
-        Vehicle::create($validated);
+        $vehicle = Vehicle::create($validated);
+
+        AuditLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Created vehicle',
+            'description' => 'Vehicle ID: ' . $vehicle->id,
+            'ip_address' => $request->ip(),
+        ]);
 
         return redirect()->route('vehicles.index')->with('success', 'Vehicle added.');
     }
@@ -72,13 +82,20 @@ class VehicleController extends Controller
             'model' => 'required|string|min:1|max:255',
             'year' => 'required|integer|between:1900,' . date('Y'),
             'mileage' => 'required|integer|min:0|max:10000000',
-            'vin' => 'nullable|string|size:17',
-            'registration_number' => 'nullable|string|min:4|max:20',
+            'vin' => 'required|string|size:17',
+            'registration_number' => 'required|string|min:4|max:20',
             'maintenance_history' => 'nullable|string|max:1000',
             'inspection_records' => 'nullable|string|max:1000',
         ]);
 
         $vehicle->update($validated);
+
+        AuditLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Updated vehicle',
+            'description' => 'Vehicle ID: ' . $vehicle->id,
+            'ip_address' => $request->ip(),
+        ]);
 
         return redirect()->route('vehicles.show', $vehicle)->with('success', 'Vehicle updated.');
     }
@@ -108,7 +125,15 @@ class VehicleController extends Controller
             abort(403);
         }
 
+        $id = $vehicle->id;
         $vehicle->delete();
+
+        AuditLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'Deleted vehicle',
+            'description' => 'Vehicle ID: ' . $id,
+            'ip_address' => $request->ip(),
+        ]);
 
         return redirect()->route('vehicles.index')->with('success', 'Vehicle deleted.');
     }
